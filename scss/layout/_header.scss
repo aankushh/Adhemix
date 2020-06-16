@@ -1,0 +1,117 @@
+/*****************************
+10 - Layout - Header
+*****************************/
+
+/*-- 10.00 - Header --*/
+
+.header{
+    .logo{
+        display: block;
+        &--normal{
+            visibility: visible;
+            height: auto;
+        }
+        &--transparency{
+            visibility: hidden;
+            height: 0;
+        }
+    }
+    &__outer{
+        position: relative;
+    }
+    &__inner{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background-color: $color-white;
+        @include transition(background .25s);
+        z-index: 4;
+    }
+    &__main{
+        @include flexbox;
+        @include align-items(center);
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	&__col{
+        @include flex(1, 0, auto);
+        @include flexbox;
+	}
+    &-default{
+        .header{
+            &__left{
+				@include justify-content(flex-start); 
+            }
+            &__center{
+                @include justify-content(center); 
+            }
+            &__right{
+                @include justify-content(flex-end); 
+            }
+        }
+    }
+	.toolbar-item{
+		&:not(:last-child){
+			margin-right: 30px;
+			@include breakpoint(xsmall){
+				margin-right: 15px;
+			}
+		}
+	}
+}
+
+
+/*--10.02 Header Transparent--*/
+
+.header-transparent{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: transparent;
+    .header{
+        &__inner{
+            background-color: transparent;
+        }
+        &__main{
+            padding-top: 50px; 
+            @include transition(padding .25s);
+            will-change: padding;
+        }
+    }  
+}
+
+
+/*-- 10.04 - Sticky Header CSS --*/
+
+.is-sticky{
+	.header__inner{
+		position: fixed;
+		top: 0;
+        background-color: #fff;
+        @include transform(translate(0,-100%));
+		    &.header{
+                &--pinned{
+                    @include transform(translate(0,0));
+                    @include transition(.5s,background .25s,visibility .25s,opacity 0s);
+                }
+                &--unpinned{
+                    @include transform(translate(0,-100%));
+                    visibility: hidden;
+                    opacity: 0;
+                    @include transition(.5s,background .25s,visibility .25s,opacity 0s);
+                }
+		}
+	}
+	&.header-transparent{
+		.header__main{
+			padding-top: 33px;
+			@include transition(padding .25s);
+		}
+	}
+}
+
+

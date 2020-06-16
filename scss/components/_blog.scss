@@ -1,0 +1,111 @@
+/*****************************
+21 - Components - Blog
+*****************************/
+
+
+/*-- 21.00 - Blog --*/
+
+.blog{
+	&__inner{
+		&:hover{
+			.item-overlay{
+
+			}
+			.blog{
+				&__media{
+					.image{
+						img{
+							
+						}
+					}
+				}
+			}
+		}
+	}
+	&__media{
+
+		img{
+			
+		}
+	}
+	&__info{
+
+		&:before{
+
+		}
+	}
+	&__title{
+
+	}
+	&__meta{
+
+		.posted-on{
+			
+		}
+		.posted-by{
+
+		}
+	}
+	&__desc{
+
+	}
+}
+
+/*-- 21.01 - Blog Details --*/
+
+.single-post{
+
+	&__header{
+
+	}
+	&__title{
+
+	}
+	&__header-meta{
+
+	}
+	&__info{
+		p{
+			&:not(:last-child){
+
+			}
+		}
+		blockquote{
+
+			&:before{
+
+			}
+		}
+	}
+	&__meta{
+		.posted-by{
+
+			span{
+  
+				&.byline{
+					
+				}
+			}
+			a{
+				
+			}
+		}
+	}
+}
+
+/*-- 21.02 - Related Post --*/
+
+.related-post{
+	&__inner{
+		
+	}
+	&__media{
+
+	}
+	&__info{
+
+	}
+	&__title{
+
+	}
+}

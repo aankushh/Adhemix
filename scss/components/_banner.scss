@@ -1,0 +1,89 @@
+/*****************************
+20 - Components - Banner
+*****************************/
+
+.banner{
+	&__inner{
+		@extend %posrelative;
+		@extend %flexbox;
+		@extend %flex-wrap;
+	}
+	&__image{
+		@include flex-basis(47%);
+		max-width: 47%;
+		@include breakpoint(large){
+			@include flex-basis(50%);
+			max-width: 50%;
+		}
+		@include breakpoint(xsmall){
+			@include flex-basis(100%);
+			max-width: 100%;
+		}
+	}
+	&__info{
+		@include flex-basis(53%);
+		max-width: 53%;
+		@extend %posrelative;
+		@include breakpoint(large){
+			@include flex-basis(50%);
+			max-width: 50%;
+		}
+		@include breakpoint(xsmall){
+			@include flex-basis(100%);
+			max-width: 100%;
+			padding-top: 100%;
+		}
+		&-inner{
+			padding-left: 50px;
+			padding-top: 51px;
+			@extend %posabsolute;
+			@extend %top-0;
+			@include breakpoint(xlarge){
+				padding-left: 40px;
+				padding-top: 40px;  
+			}
+			@include breakpoint(medium){
+				padding-right: 15px;
+			}
+			@include breakpoint(xsmall){
+				padding-left: 25px;
+				padding-top: 25px;  
+			}
+		}
+	}
+	&__title{
+		font-size: 35px;
+		margin-bottom: 27px;
+		@include breakpoint(large){
+			font-size: 31px;
+			margin-bottom: 20px;
+		}
+		@include breakpoint(small){
+			font-size: 28px;
+		}
+	}
+	&__text{
+		@extend %fontSize16;
+		@extend %fontWeight700;
+		@extend %white-color;
+		@extend %textTupper;
+		@extend %lineheight1;
+		background-color: #000;
+		padding: 13px 14px;
+		letter-spacing: 1px;
+		@include white-space(nowrap);
+		@include breakpoint(xsmall){
+			font-weight: 600;
+			font-size: 12px;
+		}
+	}
+	&__btn{
+		@extend %fontSize18;
+		@extend %border-bottom;
+		@extend %displayInlineBlock;
+		margin-bottom: 45px;
+		@include breakpoint(large){
+			margin-bottom: 35px;
+		}
+	}
+}

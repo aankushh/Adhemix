@@ -1,0 +1,189 @@
+/*****************************
+21 - Components - Blog
+*****************************/
+
+
+/*-- 21.00 - Blog --*/
+
+.post{
+	&__inner{
+		&:hover{
+			.item-overlay{
+				@extend %visible;
+				@extend %width100;
+				@extend %height100;
+			}
+			.blog{
+				&__media{
+					.image{
+						img{
+							@include transform(scale(1.1));
+						}
+					}
+				}
+			}
+		}
+	}
+	&__media{
+		margin-bottom: 27px;
+		@extend %posrelative;
+		@extend %overflowHidden;
+		img{
+			@include transition(all .3s .25s);
+		}
+	}
+	&__title{
+		font-size: 20px; 
+		max-width: 90%; 
+		margin-bottom: 15px;
+	}
+	&__meta{
+		.posted-on{
+			@extend %primary-color;
+			@extend %fontSize14;
+			@extend %displayInlineBlock;
+			margin-right: 25px;
+		}
+		.posted-by{
+			@extend %primary-color;
+			@extend %fontSize14;
+			@extend %displayInlineBlock;
+		}
+	}
+	&__desc{
+		margin-top: 15px;
+	}
+	&__footer-meta{
+		@extend %flexbox;
+		@extend %justify-between;
+		@extend %align-center;
+		margin-top: 23px;
+		.social-share{
+			@extend %verticalFlexCenter;
+			& > span{
+				margin-right: 20px;
+			}
+		}
+	}
+}
+/*-- 21.01 - Blog Details --*/
+
+.single-post{
+	margin-top: -315px;
+	border-bottom: 2px solid $border-color;
+	@include breakpoint(medium){
+		margin-top: -250px;
+	}
+	@include breakpoint(small){
+		margin-top: -200px;
+	}
+	&__header{
+		@extend %border-bottom;
+		margin-bottom: 32px;
+		@include breakpoint(small){
+			margin-bottom: 20px;
+		}
+	}
+	&__title{
+		font-size: 45px;
+		line-height: 1.222;
+		margin-bottom: 38px;
+		@extend %fontWeight400;
+		@extend %body-color;
+		@include breakpoint(medium){
+			font-size: 35px;
+		}
+		@include breakpoint(small){
+			font-size: 30px;
+		}
+	}
+	&__header-meta{
+		@extend %verticalFlexCenter;
+		@extend %justify-between;
+		padding-top: 12px;
+		padding-bottom: 10px;
+	}
+	&__info{
+		p{
+			&:not(:last-child){
+				margin-bottom: 35px;
+				@include breakpoint(small){
+					margin-bottom: 25px;
+				}
+			}
+		}
+		blockquote{
+			color: $color-shark;
+			font-size: 28px;
+			padding-top: 19px;
+			margin-bottom: 29px;
+  			line-height: 1.357;
+			@extend %fontWeight500;
+			@extend %textAcenter;
+			@extend %posrelative;
+			@include breakpoint(small){
+				font-size: 24px;
+			}
+			&:before{
+				@extend %posabsolute;
+				@extend %hCenter;
+				content: '\0022';
+				font-family: $body-font;
+				line-height: 0;
+				font-size: 140px;
+				color: $color-shark;
+				top: 6px;
+			}
+		}
+	}
+	&__meta{
+		@include breakpoint(small){
+			margin-bottom: 22px;
+		}
+		.posted-by{
+			border-bottom: 2px solid $border-color-2;
+			margin-bottom: 26px;
+			padding-bottom: 30px;
+			@include breakpoint(small){
+				margin-bottom: 30px;
+				padding-bottom: 23px;
+			}	
+			span{
+  				line-height: 1.846;
+  				@extend %displayBlock;
+				@extend %fontSize13;
+				@extend %fontItalic;
+				@include breakpoint(small){
+					display: inline-block;
+				}
+				&.byline{
+					color: $color-dust-gray;
+				}
+			}
+			a{
+				color: $color-dark;
+			}
+		}
+	}
+}
+
+/*-- 21.02 - Related Post --*/
+
+.related-post{
+	&__inner{
+		@extend %flexbox;
+	}
+	&__media{
+		max-width: 150px;
+		@include flex-basis(150px);
+	}
+	&__info{
+		max-width: calc(100% - 150px);
+		@include flex-basis(calc(100% - 150px));
+		padding-left: 30px;
+	}
+	&__title{
+		@extend %fontSize18;
+		@extend %fontWeight500;
+	}
+}

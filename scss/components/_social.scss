@@ -1,0 +1,51 @@
+/*****************************
+32 - Components - Social
+*****************************/
+
+.social{
+    &__link{
+        @extend %displayInlineBlock;
+        i{
+            font-size: 16px;
+        }
+        &.facebook{
+            background-color: $facebook !important;
+        }
+        &.twitter{
+            background-color: $twitter !important;
+        }
+        &.gplus{
+            background-color: $google-plus !important;
+        }
+    }
+    &-rounded{
+        .social__link{
+            @include textBoxCenter(35, 35);
+            @extend %primary-bg-color;
+            @extend %borderRadius50;
+            @extend %white-color;
+            &:hover{
+                @extend %body-bg-color;
+            }
+        }
+    }
+    &-square{
+        .social__link{
+            @include textBoxCenter(35, 35);
+            @extend %primary-bg-color;
+            @extend %white-color;
+            &:hover{
+                @extend %body-bg-color;
+            }
+        }
+    }
+    &.space{
+        &-10{
+            .social__link{
+                &:not(:last-child){
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
