@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        <!-- Main Content Wrapper Start -->
+        <main class="main-content-wrapper">
+            <!-- Slider area Start -->
+            <section class="homepage-slider mb--11pt5">
+                <div class="element-carousel slick-right-bottom" data-slick-options='{
+                    "slidesToShow": 1, 
+                    "dots": true
+                }'>
+                    <div class="item">
+                        <div class="single-slide d-flex align-items-center bg-image"
+                            data-bg-image="{% static 'assets/img/slider/slider-bg-01.jpg' %}">
+                            <div class="container">
+                                <div class="row align-items-center no-gutters w-100">
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="slider-content">
+                                            <div class="slider-content__text mb--95 md-lg--80 mb-md--40 mb-sm--15">
+                                                <h3 class="text-uppercase font-weight-light" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">ADHEMIX PRODUCT!</h3>
+                                                <h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">EPOXY</h1>
+                                                <p class="font-weight-light" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">Neque porro quisquam est, qui
+                                                    dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+                                                    quia non numquam eius modi
+                                                    tempora Neque porro quisquam est, qui dolorem ipsum</p>
+                                            </div>
+                                            <div class="slider-content__btn">
+                                                <a href="{% url "adhemix_app:shop" %}" class="btn-link" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".6s">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-2 col-md-4">
+                                        <figure class="slider-image d-none d-md-block">
+                                            <img src="{% static 'assets/img/slider/slider-image-01.png' %}" alt="Slider Image">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-slide d-flex align-items-center bg-image"
+                            data-bg-image="{% static 'assets/img/slider/slider-bg-01.jpg' %}">
+                            <div class="container">
+                                <div class="row align-items-center no-gutters w-100">
+                                    <div class="col-lg-6 col-md-8">
+                                        <div class="slider-content py-0">
+                                            <div class="slider-content__text mb--95 md-lg--80 mb-md--40 mb-sm--15">
+                                                <h3 class="text-uppercase font-weight-light" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">ADHEMIX PRODUCT!</h3>
+                                                <h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">EPOXY</h1>
+                                                <p class="font-weight-light" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".3s">Neque porro quisquam est, qui
+                                                    dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+                                                    quia non numquam eius modi
+                                                    tempora Neque porro quisquam est, qui dolorem ipsum</p>
+                                            </div>
+                                            <div class="slider-content__btn">
+                                                <a href="{% url "adhemix_app:shop" %}" class="btn-link" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".6s">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-2 col-md-4">
+                                        <figure class="slider-image d-none d-md-block">
+                                            <img src="{% static 'assets/img/slider/slider-image-02.png' %}" alt="Slider Image">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Slider area End -->
+
+            <!-- Featured Product Area Start -->
+            <section class="featured-product-area mb--10pt8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="sr-only">Featured Product</h2>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-sm--50">
+                            <div class="featured-product">
+                                <div class="featured-product__inner info-center">
+                                    <figure class="featured-product__image">
+                                        <img src="{% static 'assets/img/products/product-01-500x466.jpg' %}" alt="Featured Product">
+                                    </figure>
+                                    <div class="featured-product__info wow pbounceInLeft" data-wow-delay=".3s"
+                                        data-wow-duration="1s">
+                                        <div class="featured-product__info-inner">
+                                            <h4 class="featured-product__text">ADHEMIX Product!</h4>
+                                            <h2 class="featured-product__name">EPOXY</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="featured-product">
+                                <div class="featured-product__inner info-left-bottom">
+                                    <figure class="featured-product__image">
+                                        <img src="{% static 'assets/img/products/product-02-500x575.jpg' %}" alt="Featured Product">
+                                    </figure>
+                                    <div class="featured-product__info wow pbounceInDown" data-wow-duration="1s">
+                                        <div class="featured-product__info-inner rotated-info">
+                                            <h4 class="featured-product__text">Special Offer <strong>39%</strong> Off
+                                            </h4>
+                                            <h2 class="featured-product__name">ADHEMIX</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Featured Product Area End -->
+
+            <!-- Product Area Start -->
+            <section class="product-area mb--50 mb-xl--40 mb-lg--25 mb-md--30 mb-sm--20 mb-xs--15">
+                <div class="container">
+                    <div class="row mb--42">
+                        <div class="col-lg-5 col-sm-10">
+                            <h2 class="heading__secondary">FAQ'S</h2>
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor ipisci velit, sed quia non numquam
+                                eius modi </p>
+                        </div>
+
+                    </div>
+                    <!--TEMPEORORY SECTION END-->
+            </section>
+
+            <section class="method-area mb--11pt5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="sr-only">Methods</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-sm--50">
+                            <div class="method-box shipment-method">
+                                <i class="flaticon-truck"></i>
+                                <h3>Free Home Delivery</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-sm--50">
+                            <div class="method-box money-back-method">
+                                <i class="flaticon-money"></i>
+                                <h3>MONEY BACK GUARANTEE</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="method-box support-method">
+                                <i class="flaticon-support"></i>
+                                <h3>SUPORT 24/7</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Main Content Wrapper End -->
+
+
+
+{% endblock content %}
