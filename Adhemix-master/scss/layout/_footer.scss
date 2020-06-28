@@ -1,0 +1,134 @@
+/*****************************
+11 - Layout - Footer
+*****************************/
+
+.footer{
+	.container{
+		@include breakpoint(small){
+			max-width: 100%;
+		}
+	}
+	&-widget{
+		.widget-title{
+			text-transform: uppercase;
+			font-size: 20px;
+		}
+		.address-widget{
+			a{
+				display: block;
+			}
+		}
+	}
+	&-menu{
+		li{
+			margin-bottom: 5px;
+			a{
+				@include flexbox;
+				@extend %align-center;
+				@extend %body-color;
+				i{
+					font-size: 16px;
+				}
+				span{
+					padding-left: 5px;
+				}
+			}
+		}
+	}
+	&-column{
+		&-1{
+			@include flex(0, 0, 33.333333%);
+			max-width: 33.333333%;
+			@include breakpoint(xlarge){
+				@include flex(0, 0, 30%);
+				max-width: 30%;
+			}
+			@include breakpoint(large){
+				@include flex(0, 0, 25%);
+				max-width: 25%;
+			}
+			@include breakpoint(medium){
+				@include flex(0, 0, 67%);
+				max-width: 67%;
+			}
+			@include breakpoint(xsmall){
+				@include flex(0, 0, 100%);
+				max-width: 100%;
+			}
+		}
+		&-2{
+			@include flex(0, 0, 13%);
+			max-width: 13%;
+			@include breakpoint(xlarge){
+				@include flex(0, 0, 14%);
+				max-width: 14%;
+			}
+			@include breakpoint(large){
+				@include flex(0, 0, 17%);
+				max-width: 17%;
+			}
+			@include breakpoint(medium){
+				@include flex(0, 0, 33%);
+				max-width: 33%;
+			}
+			@include breakpoint(xsmall){
+				@include flex(0, 0, 100%);
+				max-width: 100%;
+			}
+		}
+		&-3{
+			margin-left: 4%;
+			@include breakpoint(large){
+				margin-left: 0;
+				max-width: 20%;
+				@include flex(0, 0, 20%);
+			}
+			@include breakpoint(medium){
+				@include flex(0, 0, 33.33333%);
+				max-width: 33.33333%;
+			}
+			@include breakpoint(xsmall){
+				@include flex(0, 0, 100%);
+				max-width: 100%;
+			}
+		}
+		&-4{
+			margin-left: 2%;
+			max-width: 17%;
+			@include flex(0, 0, 17%);
+			@include breakpoint(large){
+				margin-left: 0;
+				max-width: 20%;
+				@include flex(0, 0, 20%);
+			}
+			@include breakpoint(medium){
+				@include flex(0, 0, 33.33333%);
+				max-width: 33.33333%;
+			}
+			@include breakpoint(xsmall){
+				@include flex(0, 0, 100%);
+				max-width: 100%;
+			}
+		}
+		&-5{
+			max-width: 14%;
+			@include flex(0, 0, 14%);
+			@include breakpoint(xlarge){
+				@include flex(0, 0, 15%);
+				max-width: 15%;
+			}
+			@include breakpoint(large){
+				@include flex(0, 0, 18%);
+				max-width: 18%;
+			}
+			@include breakpoint(medium){
+				@include flex(0, 0, 33.33333%);
+				max-width: 33.33333%;
+			}
+			@include breakpoint(xsmall){
+				@include flex(0, 0, 100%);
+				max-width: 100%;
+			}
+		}
+	}
+}

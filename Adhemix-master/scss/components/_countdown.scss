@@ -1,0 +1,39 @@
+
+.countdown-wrap{
+    .countdown{
+		@extend %flexbox;
+		@extend %flex-wrap;
+        @extend %justify-around;
+        @include breakpoint(xsmall){
+            @include justify-content(flex-start);
+        }
+        &__item{
+            @extend %textAcenter;
+            @include flex-basis(70px);
+            max-width: 70px;
+            @include breakpoint(xsmall){
+                @include flex-basis(60px);
+                max-width: 60px;
+            }
+        }
+        &__time{
+            @extend %displayBlock;
+            @extend %fontWeight500;
+            @extend %heading-color;
+            @extend %fontSize24;
+            @extend %lineheight1;
+            @include breakpoint(xsmall){
+                font-size: 18px;
+            }
+        }
+        &__text{
+            @extend %displayBlock;
+            @extend %textTcap;
+            @extend %fontSize18;
+            @extend %heading-color;
+            @include breakpoint(xsmall){
+                font-size: 12px;
+            }
+        }
+    }
+}

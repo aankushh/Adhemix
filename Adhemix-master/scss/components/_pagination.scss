@@ -1,0 +1,35 @@
+.pagination{
+	@extend %justify-center;
+	li{
+		&:not(:last-child){
+   			margin-right: 20px;
+		}
+		.page-number{
+			@include textBoxCenter(35, 35);
+			@extend %primary-bg-color;
+			@extend %white-color;
+			@extend %displayBlock;
+			@extend %basetransition;
+			@extend %border-width-1;
+			@extend %border-style;
+			border-color: transparent;
+			&.current{
+				@extend %transparent-bg;
+				@extend %border-color;
+				@extend %primary-color;
+			}
+			&:hover{
+				@extend %transparent-bg;
+				@extend %border-color;
+				@extend %primary-color;
+			}
+		}
+		.dot{
+			@extend %displayInlineBlock;
+			@extend %primary-bg-color;
+			width: 5px;
+			height: 5px;
+			line-height: 5px;
+		}
+	}
+}

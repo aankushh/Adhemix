@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block content %}
-
         <!-- Breadcrumb area Start -->
         <section class="page-title-area bg-color" data-bg-color="#f4f4f4">
             <div class="container">
@@ -24,6 +23,7 @@
         <div class="main-content-wrapper">
             <div class="page-content-inner pt--80 pt-md--60">
                 <div class="container">
+                
                     <div class="row no-gutters mb--80 mb-md--57">
                         <div class="col-lg-7 product-main-image">
                             <div class="product-image">
@@ -39,7 +39,7 @@
                                             }'>
                                                 <div class="item">
                                                     <figure class="product-gallery__image zoom">
-                                                        <img src="{% static 'assets/img/products/product-03-500x555.png' %}"
+                                                        <img src="{{object.image.url}}"
                                                             alt="Product">
                                                         <span class="product-badge sale">Sale</span>
                                                         <div class="product-gallery__actions">
@@ -53,7 +53,7 @@
                                                 </div>
                                                 <div class="item">
                                                     <figure class="product-gallery__image zoom">
-                                                        <img src="{% static 'assets/img/products/product-04-500x555.png' %}"
+                                                        <img src="{{object.image.url}}"
                                                             alt="Product">
                                                         <span class="product-badge sale">Sale</span>
                                                         <div class="product-gallery__actions">
@@ -61,27 +61,14 @@
                                                                     class="fa fa-eye"></i></button>
                                                             <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
                                                                 class="action-btn video-popup"><i
-                                                                    class="fa fa-play"></i></a>
+                                                                    class="fa fa-play"></i>
+                                                            </a>
                                                         </div>
                                                     </figure>
                                                 </div>
                                                 <div class="item">
                                                     <figure class="product-gallery__image zoom">
-                                                        <img src="{% static 'assets/img/products/product-05-500x555.png' %}"
-                                                            alt="Product">
-                                                        <span class="product-badge sale">Sale</span>
-                                                        <div class="product-gallery__actions">
-                                                            <button class="action-btn btn-zoom-popup"><i
-                                                                    class="fa fa-eye"></i></button>
-                                                            <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                                class="action-btn video-popup"><i
-                                                                    class="fa fa-play"></i></a>
-                                                        </div>
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure class="product-gallery__image zoom">
-                                                        <img src="{% static 'assets/img/products/product-06-500x555.png' %}"
+                                                        <img src="{{object.image.url}}" 
                                                             alt="Product">
                                                         <span class="product-badge sale">Sale</span>
                                                         <div class="product-gallery__actions">
@@ -148,25 +135,19 @@
                                         ]'>
                                             <div class="item">
                                                 <figure class="product-gallery__nav-image--single">
-                                                    <img src="{% static 'assets/img/products/product-03-270x300.jpg' %}"
+                                                    <img src="{{object.image.url}}"
                                                         alt="Products">
                                                 </figure>
                                             </div>
                                             <div class="item">
                                                 <figure class="product-gallery__nav-image--single">
-                                                    <img src="{% static 'assets/img/products/product-04-270x300.jpg' %}"
+                                                    <img src="{{object.image.url}}"
                                                         alt="Products">
                                                 </figure>
                                             </div>
                                             <div class="item">
                                                 <figure class="product-gallery__nav-image--single">
-                                                    <img src="{% static 'assets/img/products/product-05-270x300.jpg' %}"
-                                                        alt="Products">
-                                                </figure>
-                                            </div>
-                                            <div class="item">
-                                                <figure class="product-gallery__nav-image--single">
-                                                    <img src="{% static 'assets/img/products/product-06-270x300.jpg' %}"
+                                                    <img src="{{object.image.url}}"
                                                         alt="Products">
                                                 </figure>
                                             </div>
@@ -186,15 +167,12 @@
                                         <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                     </div>
                                 </div>
-                                <h3 class="product-title mb--20">Golden Easy Spot Chair.</h3>
-                                <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed suscipit
-                                    arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget,
-                                    sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus
-                                    scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
+                                <h3 class="product-title mb--20">{{object.title}}</h3>
+                                <p class="product-short-description mb--20">{{object.description|truncatechars:200}}</p>
                                 <div class="product-price-wrapper mb--25">
-                                    <span class="money">$200.00</span>
+                                    <span class="money">{{object.price}}</span>
                                     <span class="price-separator">-</span>
-                                    <span class="money">$400.00</span>
+                                    <span class="money">{{object.discount_price}}</span>
                                 </div>
                                 <form action="#" class="variation-form mb--20">
                                     <div class="product-size-variations d-flex align-items-center mb--15">
@@ -238,21 +216,20 @@
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-shape-square btn-size-sm"
-                                        onclick="window.location.href='{% url "adhemix_app:cart" %}'">
+                                        onclick="window.location.href='{{object.get_add_to_cart_url}}'">
                                         Add To Cart
                                     </button>
                                 </div>
                                 <div class="product-footer-meta">
                                     <p><span>Category:</span>
-                                        <a href="shop.html">Full Sweater</a>,
-                                        <a href="shop.html">SweatShirt</a>,
-                                        <a href="shop.html">Jacket</a>,
-                                        <a href="shop.html">Blazer</a>
+                                        <a href="shop.html">{{object.category}}</a>,
+                                        <a href="shop.html">{{object.label}}</a>,
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row justify-content-center mb--77 mb-md--57">
                         <div class="col-12">
                             <div class="tab-style-1">
@@ -274,22 +251,7 @@
                                     <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
                                         aria-labelledby="nav-description-tab">
                                         <div class="product-description">
-                                            <p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et
-                                                dolore magna aliqua. Ut enim ad minim veniaLo ipsum dolor sit amet,
-                                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                dolore eu fugiat nulla paExcepteur sint occaecat cupidatat non proident,
-                                                sunt in culpa qui officia deserunt mollit anim id est laborum. iatis
-                                                unde omnis iste natus error sit voluptatem accusantium </p>
-
-                                            <p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et
-                                                dolore magna aliqua. Ut enim ad minim veniaLo ipsum dolor sit amet,
-                                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                exercitation ullamco.</p>
-
+                                            {{object.description}}
                                             <h5 class="product-description__heading">Characteristics :</h5>
                                             <ul>
                                                 <li><i class="fa fa-circle"></i><span>Rsit amet, consectetur
@@ -411,233 +373,6 @@
                                                             </div>
                                                         </form>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb--77 mb-md--57">
-                        <div class="col-12">
-                            <div class="element-carousel slick-vertical-center" data-slick-options='{
-                                "spaceBetween": 30,
-                                "slidesToShow": 4,
-                                "slidesToScroll": 1,
-                                "arrows": true,
-                                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-double-left" },
-                                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-double-right" }
-                            }' data-slick-responsive='[
-                                {"breakpoint":1199, "settings": {
-                                    "slidesToShow": 3
-                                }},
-                                {"breakpoint":991, "settings": {
-                                    "slidesToShow": 2
-                                }},
-                                {"breakpoint":575, "settings": {
-                                    "slidesToShow": 1
-                                }}
-                            ]'>
-                                <div class="item">
-                                    <div class="payne-product">
-                                        <div class="product__inner">
-                                            <div class="product__image">
-                                                <figure class="product__image--holder">
-                                                    <img src="{% static 'assets/img/products/product-03-270x300.jpg' %}" alt="Product">
-                                                </figure>
-                                                <a href="{% url "adhemix_app:product_details" %}" class="product__overlay"></a>
-                                                <div class="product__action">
-                                                    <a data-toggle="modal" data-target="#productModal"
-                                                        class="action-btn">
-                                                        <i class="fa fa-eye"></i>
-                                                        <span class="sr-only">Quick View</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:wishlist" %}" class="action-btn">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <span class="sr-only">Add to wishlist</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:compare" %}" class="action-btn">
-                                                        <i class="fa fa-repeat"></i>
-                                                        <span class="sr-only">Add To Compare</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:cart" %}" class="action-btn">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span class="sr-only">Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product__info">
-                                                <div class="product__info--left">
-                                                    <h3 class="product__title">
-                                                        <a href="{% url "adhemix_app:product_details" %}">Lexbaro Begadi</a>
-                                                    </h3>
-                                                    <div class="product__price">
-                                                        <span class="money">132.00</span>
-                                                        <span class="sign">$</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product__info--right">
-                                                    <span class="product__rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="payne-product">
-                                        <div class="product__inner">
-                                            <div class="product__image">
-                                                <figure class="product__image--holder">
-                                                    <img src="{% static 'assets/img/products/product-05-270x300.jpg' %}" alt="Product">
-                                                </figure>
-                                                <a href="{% url "adhemix_app:product_details" %}" class="product-overlay"></a>
-                                                <div class="product__action">
-                                                    <a data-toggle="modal" data-target="#productModal"
-                                                        class="action-btn">
-                                                        <i class="fa fa-eye"></i>
-                                                        <span class="sr-only">Quick View</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:wishlist" %}" class="action-btn">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <span class="sr-only">Add to wishlist</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:compare" %}" class="action-btn">
-                                                        <i class="fa fa-repeat"></i>
-                                                        <span class="sr-only">Add To Compare</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:cart" %}" class="action-btn">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span class="sr-only">Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product__info">
-                                                <div class="product__info--left">
-                                                    <h3 class="product__title">
-                                                        <a href="{% url "adhemix_app:product_details" %}">Lexbaro Begadi</a>
-                                                    </h3>
-                                                    <div class="product__price">
-                                                        <span class="money">132.00</span>
-                                                        <span class="sign">$</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product__info--right">
-                                                    <span class="product__rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="payne-product">
-                                        <div class="product__inner">
-                                            <div class="product__image">
-                                                <figure class="product__image--holder">
-                                                    <img src="{% static 'assets/img/products/product-06-270x300.jpg' %}" alt="Product">
-                                                </figure>
-                                                <a href="{% url "adhemix_app:product_details" %}" class="product-overlay"></a>
-                                                <div class="product__action">
-                                                    <a data-toggle="modal" data-target="#productModal"
-                                                        class="action-btn">
-                                                        <i class="fa fa-eye"></i>
-                                                        <span class="sr-only">Quick View</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:wishlist" %}" class="action-btn">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <span class="sr-only">Add to wishlist</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:compare" %}" class="action-btn">
-                                                        <i class="fa fa-repeat"></i>
-                                                        <span class="sr-only">Add To Compare</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:cart" %}" class="action-btn">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span class="sr-only">Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product__info">
-                                                <div class="product__info--left">
-                                                    <h3 class="product__title">
-                                                        <a href="{% url "adhemix_app:product_details" %}">Lexbaro Begadi</a>
-                                                    </h3>
-                                                    <div class="product__price">
-                                                        <span class="money">132.00</span>
-                                                        <span class="sign">$</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product__info--right">
-                                                    <span class="product__rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="payne-product">
-                                        <div class="product__inner">
-                                            <div class="product__image">
-                                                <figure class="product__image--holder">
-                                                    <img src="{% static 'assets/img/products/product-08-270x300.jpg' %}" alt="Product">
-                                                </figure>
-                                                <a href="{% url "adhemix_app:product_details" %}" class="product-overlay"></a>
-                                                <div class="product__action">
-                                                    <a data-toggle="modal" data-target="#productModal"
-                                                        class="action-btn">
-                                                        <i class="fa fa-eye"></i>
-                                                        <span class="sr-only">Quick View</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:wishlist" %}" class="action-btn">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <span class="sr-only">Add to wishlist</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:compare" %}" class="action-btn">
-                                                        <i class="fa fa-repeat"></i>
-                                                        <span class="sr-only">Add To Compare</span>
-                                                    </a>
-                                                    <a href="{% url "adhemix_app:cart" %}" class="action-btn">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span class="sr-only">Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product__info">
-                                                <div class="product__info--left">
-                                                    <h3 class="product__title">
-                                                        <a href="{% url "adhemix_app:product_details" %}">Lexbaro Begadi</a>
-                                                    </h3>
-                                                    <div class="product__price">
-                                                        <span class="money">132.00</span>
-                                                        <span class="sign">$</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product__info--right">
-                                                    <span class="product__rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </span>
                                                 </div>
                                             </div>
                                         </div>

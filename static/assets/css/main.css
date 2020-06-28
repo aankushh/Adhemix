@@ -101,6 +101,14 @@ INDEX:
 00 - Base - Global
 *****************************/
 
+.d-block img {
+    max-height: 250px;
+}
+
+.login_header {
+    display: flex;
+}
+
 html {
     height: 100%;
     font-size: 62.5%;
