@@ -1,0 +1,53 @@
+/*****************************
+31 - Components - Slider
+*****************************/
+
+.homepage-slider{
+	@extend %posrelative;
+	.single-slide{
+		height: 890px;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-position: center;
+		@include breakpoint(xxalarge){
+			height: 745px;
+		}
+		@include breakpoint(medium){
+			height: 580px;
+		}
+		@include breakpoint(small){
+			height: auto;
+		} 
+		&.height-2{
+			height: 780px;
+			@include breakpoint(xlarge){
+				height: 600px;
+			}
+			@include breakpoint(medium){
+				height: 550px;
+			}
+			@include breakpoint(small){
+				height: auto;
+				padding-top: 50px;
+				padding-bottom: 50px;
+			}
+		}
+	}
+}
+
+.slider-content{
+	padding-top: 11rem;
+	@include breakpoint(medium){
+		padding-right: 20px;
+	}
+	@include breakpoint(small){
+		padding-top: 140px;
+		padding-bottom: 50px;
+		padding-right: 0px;
+	}
+	&__text{
+		p{
+			@extend %fontWeight300;
+		}
+	}
+}

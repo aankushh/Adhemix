@@ -27,6 +27,24 @@
                 <section class="contact-area mb--75 mb-md--55">
                     <div class="container">
                         <div class="row">
+
+                            <div class="col-md-7 offset-lg-1">
+                                <div class="heading mb--40">
+                                    <h2>Contact Us</h2>
+                                    <hr class="delimeter">
+                                </div>
+                                <form action="{% url 'adhemix_app:contact_message' %}" class="form" method="POST">
+                                    {% csrf_token %}
+                                    <input type="email" id="con_email" name="email" class="form__input mb--30" placeholder="Email*">
+                                    <input type="text" id="con_name" name="name" class="form__input mb--30" placeholder="Name*">
+                                    <input type="text" id="con_subject" name="subject" class="form__input mb--30" placeholder="Subject*">
+                                    <input type="tel" id="con_phone" name="phone" class="form__input mb--30" placeholder="Phone*">
+                                    <textarea class="form__input form__input--textarea mb--30" name="message" placeholder="Message" id="con_message" name="con_message"></textarea>
+                                    <button type="submit" class="btn btn-shape-round form__submit">Send Request</button>
+                                    <div class="form__output"></div>
+                                </form>
+                            </div>
+
                             <div class="col-lg-4 col-md-5 mb-sm--30">
                                 <div class="heading mb--32">
                                     <h2>Get In Touch</h2>
@@ -58,23 +76,12 @@
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                     <a href="https://www.plus.google.com" class="social__link">
+
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-7 offset-lg-1">
-                                <div class="heading mb--40">
-                                    <h2>Contact Us</h2>
-                                    <hr class="delimeter">
-                                </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="Email*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="Name*">
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="Message" id="con_message" name="con_message"></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">Send Request</button>
-                                    <div class="form__output"></div>
-                                </form>
-                            </div>
+                            
                         </div>
                     </div>
                 </section>

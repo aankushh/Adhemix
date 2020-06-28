@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load cart_template_tags %}
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -10,8 +10,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+    <link rel='shortcut icon' href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{% static 'assets/img/icon.png' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
     <!-- ************************* CSS Files ************************* -->
 
@@ -47,9 +48,6 @@
                                     <figure class="logo--normal">
                                         <img src="{% static 'assets/img/logo/logo.png' %}" alt="Logo">
                                     </figure>
-                                    <figure class="logo--transparency">
-                                        <img src="{% static 'assets/img/logo/logo.png' %}" alt="Logo">
-                                    </figure>
                                 </a>
                             </div>
                             <div class="header__col header__center">
@@ -79,10 +77,10 @@
                                                         <a href="#">Tile Grounting</a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="{% url 'adhemix_app:product_details' %}">Tile Epoy</a>
+                                                                <a href="{% url 'adhemix_app:shop' %}">Tile Epoy</a>
                                                             </li>
                                                             <li>
-                                                                <a href="{% url 'adhemix_app:product_details_sticky' %}">Sticky Products</a>
+                                                                <a href="{% url 'adhemix_app:shop' %}">Sticky Products</a>
                                                             </li>
                                                             <li>
                                                                 <a href="{% url 'adhemix_app:shop' %}">Grount</a>
@@ -153,11 +151,15 @@
                                 </nav>
                             </div>
                             <div class="header__col header__right">
+
+                            {% if request.user.is_authenticated %}
+
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="{% url 'adhemix_app:login_register' %}" class="toolbar-btn">
-                                        <span>Login</span>
+                                    <a href="{% url 'adhemix_app:logout' %}" class="toolbar-btn">
+                                        <span>Logout</span>
                                     </a>
                                 </div>
+
                                 <div class="toolbar-item d-block d-lg-none">
                                     <a href="#offcanvasnav" class="hamburger-icon js-toolbar menu-btn">
                                         <span></span>
@@ -168,21 +170,51 @@
                                         <span></span>
                                     </a>
                                 </div>
+
                                 <div class="toolbar-item">
                                     <a href="{% url 'adhemix_app:wishlist' %}" class="toolbar-btn">
                                         <i class="flaticon-heart"></i>
                                     </a>
                                 </div>
+
                                 <div class="toolbar-item mini-cart-btn">
                                     <a href="#miniCart" class="toolbar-btn js-toolbar">
                                         <span class="mini-cart-btn__icon">
                                             <i class="flaticon-bag"></i>
                                         </span>
                                         <sup class="mini-cart-btn__count">
-                                            02
+                                            {{ request.user|cart_item_count }}
                                         </sup>
                                     </a>
                                 </div>
+
+                            {% else %}
+
+                                <div class="toolbar-item d-none d-lg-block">
+                                    <a href="{% url 'adhemix_app:login' %}" class="toolbar-btn">
+                                        <span>Login</span>
+                                    </a>
+                                </div>
+
+                                <div class="toolbar-item d-block d-lg-none">
+                                    <a href="#offcanvasnav" class="hamburger-icon js-toolbar menu-btn">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </a>
+                                </div>
+
+                                <div class="toolbar-item d-none d-lg-block">
+                                    <a href="{% url 'adhemix_app:register' %}" class="toolbar-btn">
+                                        <span>Register</span>
+                                    </a>
+                                </div>
+
+                            {% endif %}
+
                             </div>
                         </div>
                     </div>
@@ -191,6 +223,17 @@
             </div>
         </header>
         <!-- Header End -->
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible py-3 fade show" role="alert">
+              <strong>Message: </strong> {{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        {% endfor %}
+    {% endif %}
 
         {% block content %}
         
@@ -216,36 +259,36 @@
                     </div>
                     <div class="col footer-column-2 mb-md--33">
                         <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">Store Menu</h3>
+                            <h3 class="widget-title mb--35 mb-sm--15">Quick links</h3>
                             <ul class="footer-menu">
                                 <li>
-                                    <a href="{% url 'adhemix_app:shop' %}">
+                                    <a href="#">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>Best Seller</span>
+                                        <span>Management</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'adhemix_app:shop' %}">
+                                    <a href="#">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>New Arrivals</span>
+                                        <span>Event</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'adhemix_app:shop' %}">
+                                    <a href="{% url 'adhemix_app:contact' %}">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>Men</span>
+                                        <span>Contact Us</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'adhemix_app:shop' %}">
+                                    <a href="{% url 'adhemix_app:about' %}">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>Women</span>
+                                        <span>About Us</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'adhemix_app:shop' %}">
+                                    <a href="{% url 'adhemix_app:about' %}">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>Accessories</span>
+                                        <span>Privacy Policy</span>
                                     </a>
                                 </li>
                             </ul>
@@ -253,109 +296,6 @@
                     </div>
                     <div class="col footer-column-3 mb-sm--33">
                         <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">Information</h3>
-                            <ul class="footer-menu">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>About Us</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Delivery Information</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Privacy Policy</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Terms &amp; Conditions</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Look Books</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col footer-column-4 mb-xs--33">
-                        <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">Question</h3>
-                            <div class="footer-widget">
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Help</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'adhemix_app:order_tracking' %}">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Track Order</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Support</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'adhemix_app:shop' %}">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Shopping &amp; Delivery</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>FAQs</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col footer-column-5">
-                        <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">My Account</h3>
-                            <ul class="footer-menu">
-                                <li>
-                                    <a href="{% url 'adhemix_app:my_account' %}">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>My Account</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:order_tracking' %}">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Order Delivery</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:wishlist' %}">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Wishlist</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Newsletter</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -400,25 +340,13 @@
                 <div class="offcanvas-navigation__top">
                     <ul class="offcanvas-menu">
                         <li class="has-children">
-                            <a href="#">
+                            <a href="{% url 'adhemix_app:index' %}">
                                 <span class="mm-text">Home</span>
                             </a>
-                            <ul class="sub-menu">
-                                <li class="has-children">
-                                    <a href="{% url 'adhemix_app:index' %}">
-                                        <span class="mm-text">Home One</span>
-                                    </a>
-                                </li>
-                                <li class="has-children">
-                                    <a href="{% url 'adhemix_app:index' %}">
-                                        <span class="mm-text">Home Two</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="{% url 'adhemix_app:shop' %}">
-                                <span class="mm-text">New Arrivals</span>
+                                <span class="mm-text">Shop</span>
                             </a>
                         </li>
                         <li class="has-children">
@@ -432,8 +360,8 @@
                                     </a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="{% url 'adhemix_app:shop_fullwidth' %}">
-                                                <span class="mm-text">Full Width</span>
+                                            <a href="{% url 'adhemix_app:shop' %}">
+                                                <span class="mm-text">Shop</span>
                                             </a>
                                         </li>
                                         <li>
@@ -479,7 +407,7 @@
                                     </a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="{% url 'adhemix_app:product_details' %}">
+                                            <a href="{% url 'adhemix_app:shop' %}">
                                                 <span class="mm-text">Tab Style 1</span>
                                             </a>
                                         </li>
@@ -504,12 +432,12 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'adhemix_app:product_details_sticky' %}">
+                                            <a href="{% url 'adhemix_app:shop' %}">
                                                 <span class="mm-text">Sticky Left</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'adhemix_app:product_details_sticky' %}">
+                                            <a href="{% url 'adhemix_app:shop' %}">
                                                 <span class="mm-text">Sticky Right</span>
                                             </a>
                                         </li>
@@ -645,7 +573,7 @@
                                     <img src="{% static 'assets/img/products/product-11-90x90.jpg' %}" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:product_details' %}">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:shop' %}">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -657,19 +585,7 @@
                                     <img src="{% static 'assets/img/products/product-12-90x90.jpg' %}" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:product_details' %}">Lexbaro Begadi</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="flaticon-cross"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="{% static 'assets/img/products/product-13-90x90.jpg' %}" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:product_details' %}">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:shop' %}">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>

@@ -1,0 +1,237 @@
+/*****************************
+34 - Components - Widget
+*****************************/
+ 
+/*-- 34.00 - Widget Title --*/
+.shop-widget{
+	.widget-title{
+		@extend %fontWeight500;
+		@extend %textTupper;
+		@extend %fontSize16;
+		@extend %lineheight1;
+		padding-bottom: 20px;
+		border-bottom: 1px solid rgb(240, 240, 240);
+		@extend %posrelative;
+		&:after{
+			@extend %pseudo;
+			@extend %left-0;
+			@extend %bottom-0;
+			height: 4px;
+			width: 30px;
+			@extend %heading-bg-color;
+		}
+	}	
+}
+
+
+/*-- 34.01 - Widget List --*/
+
+.widget-list{
+	li{
+		&:not(:last-child){
+			margin-bottom: 1.8rem;
+		}
+		a{
+			@extend %verticalFlexCenter;
+			@extend %justify-between;
+			@extend %body-color;
+			@extend %posrelative;
+			font-size: 14px;
+			strong{
+				@extend %heading-color;
+			}
+		}
+	}
+	&.category-list{
+		li{
+			a{
+				&:after{
+					@extend %pseudo;
+					right: 25px;
+					top: 50%;
+					height: 1px;
+					width: 69px;
+					background-color: rgb(240, 240, 240);
+				}
+			}
+		}
+	}
+}
+
+/*-- 34.02 - Widget Color --*/
+
+.widget-color{
+	a{
+		@extend %displayInlineBlock;
+		@extend %white-color;
+		@extend %fontSize14;
+		padding: 8px 14px;
+		margin-bottom: 5px;
+		&.red{
+			background-color: $color-red;
+		}
+		&.pink{
+			background-color: $color-pink;
+		}
+		&.black{
+			background-color: $color-black;
+		}
+		&.brown{
+			background-color: $color-brown;
+		}
+		&.blue{
+			background-color: $color-blue;
+		}
+		&.cholate{
+			background-color: $color-cholate;
+		}
+		&.copper{
+			background-color: $color-copper;
+		}
+		&.gray{
+			background-color: $color-gray;
+		}
+	}
+}
+
+/*-- 34.03 - Tagcloud --*/
+
+.tagcloud{
+	a{
+		@extend %fontSize14;
+		@extend %heading-color;
+		@extend %posrelative;
+		@extend %displayInlineBlock;
+		@extend %lineheight1;
+		margin-right: 12px;
+		padding-right: 10px;
+		&:after{
+			@extend %pseudo;
+			@extend %right-0;
+			@extend %top-0;
+			@extend %height100;
+			width: 2px;
+			background-color: #bbb
+		}
+	}
+}
+
+
+/*-- 34.04 - Contact Info --*/
+
+.contact-info{
+	p{
+		@extend %posrelative;
+		padding-left: 30px;
+		i{
+			@extend %posabsolute;
+			@extend %left-0;
+			top: 5px;
+		}
+	}
+}
+
+
+
+
+.bl-widget{
+    @extend %border;
+    &.author{ 
+        padding: 29px 20px 0;
+        @extend %paddingBottom-0;
+        .inner{
+            @extend %textAcenter;
+            .thumb {
+                img {
+                    width: 150px;
+                    height: 150px;
+                    margin-bottom: 16px;
+                    @extend %borderRadius50;
+                }
+            }
+            .info{
+                .degne{
+                    color: #a1a1a1;
+                    @extend %fontSize13;
+                    font-style: italic;
+                    margin-bottom: 6px;
+                }
+
+                .autor-meta{
+                    @extend %border-top;
+                    margin: 0 -20px;
+                    span{
+                        @extend %displayInlineBlock;
+                        @extend %fontSize14;
+                        color: #222;
+                        padding: 10px 12px;
+                        strong{
+                            color: #5a5c68;
+                            @extend %displayBlock;
+                        }
+                        & + span{
+                            @extend %border-left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.post{
+        padding: 20px;
+        @extend %textAleft;
+        .inner{
+            .post-list{
+                @extend %padding-0;
+                @extend %margin-0;
+                list-style: none;
+                margin-bottom: -20px;
+                margin-top: 30px;
+                li{
+                    margin-bottom: 20px;
+                    a {
+                        color: #222;
+                        @extend %displayBlock;
+                        line-height: 20px;
+                        @extend %textTupper;
+                        margin-bottom: 6px;
+                        transition: 0.4s;
+                        @extend %fontSize13;
+                        &:hover{
+                            color: $primary-color;
+                        }
+                    }
+                    span { 
+                        color: #bab9be;
+                        i {
+                            padding-right: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.quote{
+        padding: 20px;
+        .inner{
+            .post-quote {
+                .quote-info {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    i {
+                        color: $primary-color;
+                        padding-right: 15px;
+                        font-size: 22px;
+                    }
+                }
+                p{
+                    font-size: 15px;
+                    line-height: 1.6;
+                }
+            }
+        }
+    }
+}

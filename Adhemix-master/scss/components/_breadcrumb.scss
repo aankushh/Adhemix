@@ -1,0 +1,47 @@
+
+.page-title-area{
+	padding-top: 72px;
+	padding-bottom: 82px;
+	@include breakpoint(xlarge){
+		padding-bottom: 80px;
+	}
+	@include breakpoint(medium){
+		padding-top: 60px;
+		padding-bottom: 66px;
+	}
+}
+.page-title-area-2 {
+    height: 60rem;
+}
+.page-title{
+    font-size: 6rem;
+    @extend %textTupper;
+	@extend %fontWeight600;
+	@include breakpoint(small){
+		font-size: 5rem;
+	}
+}
+.breadcrumb{
+	@extend %borderRadius0;
+	@extend %transparent-bg;
+	@extend %padding-0;
+	@extend %marginBottom-0;
+	@extend %justify-center;
+	li{
+		@extend %posrelative;
+		a, span{
+			@extend %body-color;
+		}
+		&:not(:last-child){
+		    margin-right: 10px;
+		    padding-right: 15px;
+			&:after{
+				@extend %posabsolute;
+				@extend %body-color;
+				@extend %right-0;
+				@extend %top-0;
+				content: '/';
+			}
+		}
+	}
+}

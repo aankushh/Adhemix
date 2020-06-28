@@ -1,0 +1,213 @@
+/*****************************
+25 - Components - Form
+*****************************/
+
+
+/*-- 25.00 - Global Form --*/
+
+.form{
+    &__notes{
+        color: $color-dust-gray;
+        @extend %fontSize12;
+    }
+    &__label{
+        @extend %body-color;
+        @extend %fontSize14;
+        @extend %fontWeight500;
+        @extend %margin-0;
+    }
+    &__input{
+        @extend %border;
+        @extend %border-color-2;
+        @extend %width100;
+        @extend %borderRadius;
+        height: 40px;
+        padding-left: 10px;
+        &--textarea{
+            height: 100px;
+        }
+        &.nice-select{
+            width: 100%;
+            height: 40px;
+            @extend %paddingLeft-0;
+        }
+    }
+    &__output{
+        @extend %textAleft;
+        margin-top: 5px;
+        &.success{
+            color: $color-green;
+        }
+        &.error{ 
+            color: $color-red;
+        }
+    }
+    &__fieldset{
+        @extend %border;
+        @extend %border-color-2;
+        @extend %margin-0;
+        padding: 15px;
+    }
+    &__legend{
+        @extend %fontSize12;
+        @extend %border-none;
+        @extend %displayInlineBlock;
+        @extend %linheightInherit;
+        @extend %widthAuto;
+        padding: 0 10px;
+    }
+    &--checkout, 
+    &--track{
+        .form__label{
+            margin-bottom: 8px;
+        }
+    }
+}
+
+/*-- 25.02 - Search Form --*/
+
+.searchform {
+    @extend %posrelative;
+    max-width: 800px;
+    @include breakpoint(medium){
+        max-width: 700px;
+    }
+    @include breakpoint(small){
+        max-width: 95%;
+    }
+    &__input {
+        @extend %width100;
+        @extend %transparent-bg;
+        @extend %border-none;
+        @extend %border-width-2;
+        @extend %border-style;
+        @extend %border-color;
+        @extend %textAcenter;
+        @extend %fontWeight400;
+        @extend %maxWidth100;
+        color: #232324;
+        border-color: #232324;
+        font-size: 30px;
+        padding: 10px 50px 10px 10px;
+        @extend %basetransition;
+        @include breakpoint(medium){
+            font-size: 25px;
+        }
+        @include breakpoint(small){
+            font-size: 20px;
+        }
+    }
+
+    &__submit {
+        @extend %posabsolute;
+        @extend %displayBlock;
+        @extend %cursorPointer;
+        @extend %border-none;
+        @extend %transparent-bg;
+        @extend %padding-0;
+        @extend %vCenter;
+        @extend %lineheight1;
+        right: 15px;
+        color: #000;
+        font-size: 20px;
+        height: 30px;
+        i{
+            @extend %displayBlock;
+            font-size: 35px;
+        }
+    }
+}
+
+
+/*--- 25.03 - Nice Select --*/
+
+.nice-select{
+    padding-right: 0;
+    .current{
+        @extend %displayBlock;
+        @extend %fontSize16;
+        @extend %body-color;
+        padding-left: 10px;
+    }
+    &:after{
+        font-family: $fontAwesome;
+        content: '\f107';
+        @extend %border-none;
+        @extend %top-0;
+        @extend %right-0;
+        @extend %marginTop-0;
+        @extend %height100;
+        @extend %textAcenter;
+        @extend %fontSize16;
+        @extend %heading-color;
+        width: 40px;
+        background-color: #eeeeee;
+        line-height: 40px;
+        @include transform-origin(0 0);
+        @include transform(rotate(0));
+    }
+    &.open{
+        &:after{
+            @include transform(rotate(0));
+        }
+    }
+    .list{
+        width: 100%;
+        max-height: 260px;
+    }
+}
+
+
+/*--- 25.04 - Review Form --*/
+
+.review-form-wrapper{
+    .reply-title{
+
+    }
+    .rating{
+        i{
+
+        }
+    }
+}
+
+
+/*-- 25.05 - Cart Form --*/ 
+
+.cart-form{
+    &__input{
+        @extend %border-none;
+        @extend %heading-color;
+        @extend %width100;
+        @extend %fontSize12;
+        border-bottom: 1px solid $border-color; 
+        padding-bottom: 5px;
+        color: $heading-color;
+        @include placeholder{
+            color: $heading-color;
+        }
+    }
+    &__btn{
+        @extend %transparent-bg;
+        @extend %border-none;
+        @extend %heading-color;
+        @extend %fontWeight700;
+        @extend %fontSize14;
+        &:hover{
+            @extend %primary-color;
+        }
+    }
+    .coupon{
+        @extend %posrelative;
+        @include breakpoint(xsmall){
+            margin-bottom: 20px;
+        }
+        .cart-form{
+            &__btn{
+                @extend %posabsolute;
+                @extend %right-0;
+                @extend %top-0;
+            }
+        }
+    }
+}

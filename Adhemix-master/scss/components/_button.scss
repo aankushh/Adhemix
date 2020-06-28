@@ -1,0 +1,164 @@
+/*****************************
+22 - Components - Button
+*****************************/
+
+/*-- 22.00 - Global Button --*/
+
+.btn{
+    @extend %textAcenter;
+    @extend %cursorPointer;
+    @extend %fontWeight700;
+    @extend %fontSize12;
+    @extend %textTupper;
+	padding: 12px 30px;
+	min-width: 180px;
+	line-height: 28px;
+    border: 1px solid $heading-color;
+    background-color: $heading-color;
+    color: $color-white;
+    @include box-shadow(rgb(153, 153, 153) 0px 0px 0px 0px);
+    @include border-radius(500px);
+    @include white-space(normal);
+    @include breakpoint(large){
+    	padding: 12px 25px;
+    }
+    @include breakpoint(small){
+    	padding: 10px 25px;
+    }
+	&-size{
+		&-lg{
+			@extend %textTupper;
+			padding: 20px;
+			@include breakpoint(medium){
+				padding: 17px;
+			}
+		}
+		&-sm{
+			padding: 5px 30px;
+			min-width: 140px;
+		}
+	}
+	&-fullwidth{
+		@extend %displayBlock;
+		@extend %width100;
+	}
+	&-outline{
+		border: 1px solid $border-color;
+		background-color: transparent;
+		color: $heading-color;
+		&:hover{
+			color: $heading-color;
+		}
+	}
+	&-white{
+		color: $color-white;
+		border-color: $color-white;
+	}
+	&-shape{
+		&-rounded{
+			@include border-radius(5px);
+		}
+		&-square{
+			@include border-radius(0);
+		}
+	}
+	&-brw{
+		&-2{
+			border-width: 2px;
+		}
+	}
+	&-brc{
+		&-primary{
+			border-color: $primary-color;
+		}
+	}
+	&-color{
+		&-primary{
+			color: $primary-color;
+		}
+	}
+	&-bg{
+		&-primary{
+			background-color: $primary-color;
+			border-color: $primary-color;
+			color: $color-white;
+		}
+	}
+	&-link{
+		@extend %body-color;
+		@extend %fontSize24;
+		@extend %border-bottom;
+		@extend %border-width-2;
+		@include breakpoint(medium){
+			font-size: 20px;
+		}
+		&:hover{
+			@extend %textDnone;
+			@extend %border-bottom;
+			@extend %primary-color;
+			@extend %primary-border-color;
+			@extend %border-width-2;
+		}
+	}
+	&:hover{
+		background-color: transparent;
+		color: $body-color;
+	}
+} 
+
+/*-- 22.01 - Action Button --*/
+
+.action-btn{
+	@include textBoxCenter(40, 40);
+	background-color: #fff;
+	@include box-shadow(0px 0px 2px 0px rgba(0,0,0,.1));
+	@extend %displayInlineBlock;
+	@extend %padding-0;
+    @extend %border-none;
+	i{
+		@extend %body-color;
+		@extend %fontWeight600;
+		@extend %fontSize16;
+	}
+}
+
+/*-- 22.03 - Read More Button --*/
+
+.read-more-btn{
+	border-bottom: 1px solid #dadada;
+	padding-bottom: 5px;
+}
+
+/*-- 22.04 - Toolbar Button --*/
+
+.toolbar{
+	&-btn{
+		color: $color-cod;
+		@extend %fontSize18;
+		@extend %fontWeight300;
+		span{
+			@extend %fontWeight400;
+		}
+		i{
+			font-size: 22px;
+			@extend %fontWeight600;
+		}
+	}
+}
+
+/*-- 22.05 - Mini Cart Button --*/
+
+.mini-cart-btn{
+	@extend %posrelative;
+	&__count{
+		@include textBoxCenter(20, 20);
+		@extend %borderRadius50;
+		@extend %white-color;
+		@extend %displayInlineBlock;
+		background-color: $color-black;
+		font-size: 10px;
+		top: 0;
+		margin-left: -15px;
+		vertical-align: top;
+	}
+}
