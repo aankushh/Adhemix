@@ -30,23 +30,25 @@
                                             <tr>
                                                 <th>&nbsp;</th>
                                                 <th>&nbsp;</th>
-                                                <th class="text-left">Product</th>
+                                                <th>Product</th>
                                                 <th>Stock Status</th>
                                                 <th>Price</th>
+                                                <th>discount price</th>
                                                 <th>&nbsp;</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        {% for item in wishlist_items.items.all %}
                                             <tr>
-                                                <td class="product-remove text-left"><a href=""><i
+                                                <td class="product-remove"><a href="{% url 'adhemix_app:remove_from_wishlist' item.slug %}"><i
                                                             class="flaticon-cross"></i></a></td>
-                                                <td class="product-thumbnail text-left">
-                                                    <img src="{% static 'assets/img/products/product-11-70x88.jpg' %}"
+                                                <td class="product-thumbnail">
+                                                    <img src="{{item.image.url}}"
                                                         alt="Product Thumnail">
                                                 </td>
-                                                <td class="product-name text-left wide-column">
+                                                <td class="product-name wide-column">
                                                     <h3>
-                                                        <a href="{% url 'adhemix_app:shop' %}">Pinstripe slim-fit suit blazer</a>
+                                                        <a href="{{item.get_absolute_url}}">{{item.title}}</a>
                                                     </h3>
                                                 </td>
                                                 <td class="product-stock">
@@ -54,89 +56,44 @@
                                                 </td>
                                                 <td class="product-price">
                                                     <span class="product-price-wrapper">
-                                                        <span class="money">$49.00</span>
+                                                        <span class="money">Rs. {{item.price}}</span>
                                                     </span>
                                                 </td>
+
+                                                {% if item.item.discount_price %}
+                                                    <td class="product-price">
+                                                        <span class="product-price-wrapper">
+                                                            <span class="money">{{item.item.discount_price}}</span>
+                                                        </span>
+                                                    </td>
+                                                {% else %}
+                                                    <td class="product-price">
+                                                        <span class="product-price-wrapper">
+                                                            <span class="money">0</span>
+                                                        </span>
+                                                    </td>
+                                                {% endif %}
+
                                                 <td class="product-action-btn">
-                                                    <a href="{% url 'adhemix_app:cart' %}" class="btn">Add to cart</a>
+                                                    <a href="{% url 'adhemix_app:add_to_cart' item.slug %}" class="btn">Add to cart</a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="product-remove text-left"><a href=""><i
-                                                            class="flaticon-cross"></i></a></td>
-                                                <td class="product-thumbnail text-left">
-                                                    <img src="{% static 'assets/img/products/product-12-70x88.jpg' %}"
-                                                        alt="Product Thumnail">
-                                                </td>
-                                                <td class="product-name text-left wide-column">
-                                                    <h3>
-                                                        <a href="{% url 'adhemix_app:shop' %}">Warm Shaker Solid Wood End Table</a>
-                                                    </h3>
-                                                </td>
-                                                <td class="product-stock">
-                                                    In Stock
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="product-price-wrapper">
-                                                        <span class="money">$49.00</span>
-                                                    </span>
-                                                </td>
-                                                <td class="product-action-btn">
-                                                    <a href="{% url 'adhemix_app:cart' %}" class="btn">Add to cart</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="product-remove text-left"><a href=""><i
-                                                            class="flaticon-cross"></i></a></td>
-                                                <td class="product-thumbnail text-left">
-                                                    <img src="{% static 'assets/img/products/product-13-70x88.jpg' %}"
-                                                        alt="Product Thumnail">
-                                                </td>
-                                                <td class="product-name text-left wide-column">
-                                                    <h3>
-                                                        <a href="{% url 'adhemix_app:shop' %}">Atlin Designs Mid Century Club
-                                                            Chair</a>
-                                                    </h3>
-                                                </td>
-                                                <td class="product-stock">
-                                                    In Stock
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="product-price-wrapper">
-                                                        <span class="money">$49.00</span>
-                                                    </span>
-                                                </td>
-                                                <td class="product-action-btn">
-                                                    <a href="{% url 'adhemix_app:cart' %}" class="btn">Add to cart</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="product-remove text-left"><a href=""><i
-                                                            class="flaticon-cross"></i></a></td>
-                                                <td class="product-thumbnail text-left">
-                                                    <img src="{% static 'assets/img/products/product-11-70x88.jpg' %}"
-                                                        alt="Product Thumnail">
-                                                </td>
-                                                <td class="product-name text-left wide-column">
-                                                    <h3>
-                                                        <a href="{% url 'adhemix_app:shop' %}">Contemporary 5-Light Large
-                                                            Chandelier</a>
-                                                    </h3>
-                                                </td>
-                                                <td class="product-stock">
-                                                    In Stock
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="product-price-wrapper">
-                                                        <span class="money">$49.00</span>
-                                                    </span>
-                                                </td>
-                                                <td class="product-action-btn">
-                                                    <a href="{% url 'adhemix_app:cart' %}" class="btn">Add to cart</a>
-                                                </td>
-                                            </tr>
+
+                                            {% empty %}
+                                                    <tr>
+                                                        <td colspan="7">Your Wishlist is Empty</td>
+                                                    </tr>
+                                            {% endfor %}
+
                                         </tbody>
                                     </table>
+                                <div class="row no-gutters border-top pt--20 mt--20">
+                                    <div class="col-sm-6">
+                                    </div>
+                                    <div class="col-sm-6 text-sm-right">
+                                        <a href="{% url 'adhemix_app:shop' %}" class="btn btn-primary float-right">Continue Shopping</a>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
