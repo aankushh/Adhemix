@@ -60,6 +60,12 @@ class Item(models.Model):
 def submission_delete(sender, instance, **kwargs):
     instance.thumbnail.delete(False) 
 
+class Wishlist(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    items = models.ManyToManyField(Item)
+
+    def __str__(self):
+        return self.user.username
 
 
 class OrderItem(models.Model):

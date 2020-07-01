@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
@@ -8,8 +9,14 @@ from django.contrib import messages
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 
+MERCHANT_KEY = ''
+MERCHANT_ID = ''
+
+
 from .forms import CreateUserForm 
-from .models import Item, OrderItem, Order, BillingAddress
+from .models import Item, OrderItem, Order, BillingAddress, Wishlist
+
+from paytm import checksum
 
 # Create your views here.
 def HomeView(request):
@@ -29,8 +36,12 @@ class ItemDetailView(DetailView):
 def about(request):
     context = {
     }
-    return redirect('adhemix_app:not_found')
     return render(request, 'adhemix_app/about.html', context)
+
+def why_us(request):
+    context = {
+    }
+    return render(request, 'adhemix_app/why_us.html', context)
 
 def not_found(request):
     context = {
@@ -155,6 +166,26 @@ def add_to_cart(request, slug):
         return redirect("adhemix_app:cart")
 
 @login_required(login_url='adhemix_app:login')
+def add_to_wishlist(request, slug):
+    item = get_object_or_404(Item, slug=slug)
+
+    wishlist_qs = Wishlist.objects.filter(user=request.user)
+
+    if wishlist_qs.exists():
+        wishlist = wishlist_qs[0]
+        wishlist.items.add(item)
+        messages.info(request, "This item was Added to your Wishlist.")
+        return redirect("adhemix_app:wishlist")
+
+    else:
+        wishlist = Wishlist.objects.create(user=request.user)
+        wishlist.items.add(item)
+        messages.info(request, "This Item was Added to your Wishlist.")
+        return redirect("adhemix_app:wishlist")
+
+
+
+@login_required(login_url='adhemix_app:login')
 def remove_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(user=request.user, ordered=False)
@@ -164,6 +195,7 @@ def remove_from_cart(request, slug):
         if order.items.filter(item__slug=item.slug).exists():
             order_item = OrderItem.objects.filter(item=item, user=request.user, ordered=False)[0]
             order.items.remove(order_item)
+            order_item.delete()
             messages.info(request, "This Item was removed from your Cart.")
             return redirect("adhemix_app:cart")
         else:
@@ -172,6 +204,26 @@ def remove_from_cart(request, slug):
     else:
         messages.info(request, "You do not have an active Order.")
         return redirect("adhemix_app:product_details", slug=slug)
+
+
+@login_required(login_url='adhemix_app:login')
+def remove_from_wishlist(request, slug):
+    item = get_object_or_404(Item, slug=slug)
+    wishlist_qs = Wishlist.objects.filter(user=request.user)
+
+    if wishlist_qs.exists():
+        wishlist = wishlist_qs[0]
+        if wishlist.items.filter(slug=item.slug).exists():
+            wishlist.items.remove(item)
+            messages.info(request, "This Item was removed from your Wishlist.")
+            return redirect("adhemix_app:wishlist")
+        else:
+            messages.info(request, "This Item is not in your Wishlist.")
+            return redirect("adhemix_app:product_details", slug=slug)
+    else:
+        messages.info(request, "Try Adding Your First Item in Wishlist.")
+        return redirect("adhemix_app:product_details", slug=slug)
+
 
 @login_required(login_url='adhemix_app:login')
 def remove_single_item_from_cart(request, slug):
@@ -191,6 +243,7 @@ def remove_single_item_from_cart(request, slug):
                 return redirect("adhemix_app:cart")
             else:
                 order.items.remove(order_item)
+                order_item.delete()
                 messages.info(request, "The Item was removed from your Cart.")
                 return redirect("adhemix_app:cart")
         else:
@@ -199,12 +252,6 @@ def remove_single_item_from_cart(request, slug):
 
     else:
         messages.info(request, "You Do Not Have an Active Oeder.")
-
-@login_required(login_url='adhemix_app:login')
-def wishlist(request):
-    context = {
-    }
-    return render(request, 'adhemix_app/wishlist.html', context)
 
 @login_required(login_url='adhemix_app:login')
 def shop(request):
@@ -244,16 +291,41 @@ def contact(request):
     return render(request, 'adhemix_app/contact.html', context)
 
 def place_order(request):
-    context = {
-    }
-    return render(request, 'adhemix_app/place_order.html', context)
+
+    order_qs = Order.objects.filter(user=request.user,ordered = False)
+    if order_qs.exists():
+        order = order_qs[0]
+        param_dict = {
+                'MID':MERCHANT_ID,
+                'ORDER_ID': str(order.id),
+                'TXN_AMOUNT': str(order.get_paying_amount()),
+                'CUST_ID': str(order.user.email),
+                'INDUSTRY_TYPE_ID':'Retail',
+                'WEBSITE':'WEBSTAGING',
+                'CHANNEL_ID':'WEB',
+                'CALLBACK_URL':'http://127.0.0.1:8000/handle_paytm_request/',
+            }
+        
+
+        param_dict['CHECKSUMHASH'] = checksum.generate_checksum(param_dict, MERCHANT_KEY)
+        context = {
+            'param_dict' : param_dict
+        }
+        order.ordered = True
+
+        return render(request, 'paytm/paytm.html', context)
+    else:
+        messages.info(request, "No Order Found. Please Try Again.")
+        return redirect("adhemix_app:not_found")
+
+
 
 @login_required(login_url='adhemix_app:login')
 def user_logout(request):
     logout(request)
     return redirect("adhemix_app:index")
 
-class Cart(View):
+class CartView(View):
     def get(self, *args, **kwargs):
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
@@ -264,3 +336,34 @@ class Cart(View):
         except ObjectDoesNotExist:
             messages.error(self.request, "You Do Not Have an Active Order.")
             return redirect("/")
+
+class WishlistView(View):
+    def get(self, *args, **kwargs):
+        try:
+            wishlist_items = Wishlist.objects.get(user = self.request.user)
+            context = {
+                'wishlist_items':wishlist_items,
+            }
+            return render(self.request, "adhemix_app/wishlist.html", context)
+
+        except ObjectDoesNotExist:
+            messages.error(self.request, "Your Wishlist is Empty. Try adding a Product in Wishlist.")
+            return redirect("/")
+
+#paytm will handle post request
+@csrf_exempt
+def handle_paytm_request(request):
+    form = request.POST
+    response_dict = {}
+    for i in forms.keys():
+        response_dict[i] = form[i]
+        if i == "CHECKSUMHASH":
+            cheksum = form[i]
+       
+    verify = checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPONSE'] == '01':
+            print('successful')
+        else:
+            print('ordr was not successfull because' + response_dict['RESPMSG'])
+    return render(request,"paytm/payment_status.html", {'response':response_dict})

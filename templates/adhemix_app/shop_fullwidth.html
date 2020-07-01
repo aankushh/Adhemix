@@ -76,17 +76,9 @@
                                         </figure>
                                         <a href="{{item.get_absolute_url}}" class="product__overlay"></a>
                                         <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="{% url 'adhemix_app:wishlist' %}" class="action-btn">
+                                            <a href="{% url 'adhemix_app:add_to_wishlist' item.slug %}" class="action-btn">
                                                 <i class="fa fa-heart-o"></i>
                                                 <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="{% url 'adhemix_app:compare' %}" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
                                             </a>
                                             <a href="{{item.get_add_to_cart_url}}" class="action-btn">
                                                 <i class="fa fa-shopping-cart"></i>
@@ -94,14 +86,14 @@
                                             </a>
                                         </div>
                                     </div>
+
                                     <div class="product__info">
                                         <div class="product__info--left">
                                             <h3 class="product__title">
                                                 <a href="{{item.get_absolute_url}}">{{item.title}}</a>
                                             </h3>
                                             <div class="product__price">
-                                                <span class="money">{{item.price}}</span>
-                                                <span class="sign">$</span>
+                                                <span class="money">Rs. {{item.price}}</span>
                                             </div>
                                         </div>
                                         <div class="product__info--right">
@@ -113,47 +105,6 @@
                                                 <i class="fa fa-star"></i>
                                             </span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="payne-product-list">
-                                <div class="product__inner">
-                                    <figure class="product__image">
-                                        <a href="{{item.get_absolute_url}}" class="d-block">
-                                            <img src="{{item.image.url}}" alt="Products">
-                                        </a>
-                                        <div class="product__thumbnail-action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                        </div>
-                                    </figure>
-                                    <div class="product__info">
-                                        <h3 class="product__title">
-                                            <a href="{{item.get_absolute_url}}">{{item.title}}</a>
-                                        </h3>
-                                        <div class="product__price">
-                                            <span class="money">{{item.price}}</span>
-                                            <span class="sign">$</span>
-                                        </div>
-                                        <span class="product__rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                        <p class="product__short-description">
-                                            
-                                        </p>  
-                                        <div class="d-flex product__list-action">
-                                            <a href="{{item.get_add_to_cart_url}}" class="btn btn-size-sm">Add To Cart</a>
-                                            <a href="{% url 'adhemix_app:compare' %}" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                        </div>                                            
                                     </div>
                                 </div>
                             </div>

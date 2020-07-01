@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel='shortcut icon' href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{% static 'assets/img/icon.png' %}">
+    <link rel='shortcut icon' href="{% static 'assets/img/12.png' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'assets/img/12.png' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
     <!-- ************************* CSS Files ************************* -->
@@ -61,10 +61,10 @@
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="{% url 'adhemix_app:my_account' %}">Vision</a>
+                                                        <a href="{% url 'adhemix_app:why_us' %}">Why Us</a>
                                                     </li>
                                                     <li>
-                                                        <a href="{% url 'adhemix_app:checkout' %}">Mission</a>
+                                                        <a href="{% url 'adhemix_app:about' %}">Vision and Mission</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -74,24 +74,16 @@
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li class="has-children">
-                                                        <a href="#">Tile Grounting</a>
+                                                        <a href="#">Tile Grouting</a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="{% url 'adhemix_app:shop' %}">Tile Epoy</a>
+                                                                <a href="{% url 'adhemix_app:shop' %}">Tile Epoxy</a>
                                                             </li>
                                                             <li>
-                                                                <a href="{% url 'adhemix_app:shop' %}">Sticky Products</a>
+                                                                <a href="{% url 'adhemix_app:shop' %}">Grout</a>
                                                             </li>
                                                             <li>
-                                                                <a href="{% url 'adhemix_app:shop' %}">Grount</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="has-children">
-                                                        <a href="#">Tile Care</a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a href="#">Adhemic Cleaner</a>
+                                                                <a href="{% url 'adhemix_app:shop' %}">Grout Hardner</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -99,19 +91,27 @@
                                                         <a href="#">Tile Adhesive</a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="#">Adhemic Blend</a>
+                                                                <a href="#">Adhemix Blend</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#">Adhemic Floor
+                                                                <a href="#">Adhemix Floor
                                                                     Adheive</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#">Adhemic Wall
+                                                                <a href="#">Adhemix Wall
                                                                     Adhesive</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#">Adhemic Front
+                                                                <a href="#">Adhemix Front
                                                                     Adhesive</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="has-children">
+                                                        <a href="#">Tile Care</a>
+                                                        <ul class="sub-menu">
+                                                            <li>
+                                                                <a href="#">Adhemix Cleaner</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -177,8 +177,8 @@
                                     </a>
                                 </div>
 
-                                <div class="toolbar-item mini-cart-btn">
-                                    <a href="#miniCart" class="toolbar-btn js-toolbar">
+                                <div class="toolbar-item">
+                                    <a href="{% url 'adhemix_app:cart' %}" class="toolbar-btn">
                                         <span class="mini-cart-btn__icon">
                                             <i class="flaticon-bag"></i>
                                         </span>
@@ -239,21 +239,52 @@
         
         {% endblock content %}
 
+                <div class="row ptb--20">
+                    <div class="col-12 text-center">
+                        <div class="social space-10">
+                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
+                                <i class="fa fa-facebook"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
+                                <i class="fa fa-twitter"></i>
+                                <span class="sr-only">Twitter</span>
+                            </a>
+                            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
+                                <i class="fa fa-linkedin"></i>
+                                <span class="sr-only">Linkedin</span>
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
+                                <i class="fa fa-instagram"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
+                                <i class="fa fa-youtube"></i>
+                                <span class="sr-only">Youtube</span>
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
+                                <i class="fa fa-pinterest"></i>
+                                <span class="sr-only">Pinterest</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
         <!-- Footer Start-->
-        <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa">
+        <footer class="footer bg-color pt--20 pt-xs--20" data-bg-color="#f4f8fa">
             <div class="container">
-                <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
-                    <div class="col footer-column-1 mb-sm--42">
+                <div class="row border-bottom pb--20 pb-sm--8 pb-xs--20">
+                    <div class="col footer-column-1 mb-sm--20">
                         <div class="footer-widget">
-                            <div class="textwidget">
-                                <figure class="footer-logo mb--10">
-                                    <img src="{% static 'assets/img/logo/logo.png' %}" alt="Logo">
-                                </figure>
-                            </div>
                             <div class="address-widget">
-                                <address>1203 Town Center Orive #L 335458 USA</address>
-                                <a href="tel:+84112345678">+841 123 456 78</a>
-                                <a href="mailto:info@company.com">info@company.com</a>
+                                <figure class="footer-logo mb--10">
+                                    <img src="{% static 'assets/img/11.png' %}" style="width:180px;" alt="Logo">
+                                </figure>
                             </div>
                         </div>
                     </div>
@@ -294,36 +325,30 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="col footer-column-1 pt--60 mb-sm--20">
+                        <div class="footer-widget">
+                            <div class="address-widget">
+                            <h3 class="widget-title mb--35 mb-sm--15">Contact Details</h3>
+                                <address>Kh.No-154/296/297 <br>Ground Floor Pooth Khurd<br> Delhi-110039 (India)</address>
+                                <a href="tel:+84112345678">1800 890 6474</a>
+                                <a href="mailto:info@company.com">support@adhemix.com</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col footer-column-3 mb-sm--33">
                         <div class="footer-widget">
+                            <div class="address-widget">
+                                <img src="{% static 'assets/img/swachh_bharat.png'%}" alt="">
+                            </div>
+                            <div>
+                                <img src="{% static 'assets/img/make_in_india.png'%}" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row ptb--20">
                     <div class="col-12 text-center">
                         <p class="copyright-text">Adhemix &copy; 2020 all rights reserved</p>
-                        <div class="social space-10">
-                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
-                                class="social__link">
-                                <i class="fa fa-facebook"></i>
-                                <span class="sr-only">Facebook</span>
-                            </a>
-                            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"
-                                class="social__link">
-                                <i class="fa fa-twitter"></i>
-                                <span class="sr-only">Twitter</span>
-                            </a>
-                            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
-                                class="social__link">
-                                <i class="fa fa-linkedin"></i>
-                                <span class="sr-only">Linkedin</span>
-                            </a>
-                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
-                                class="social__link">
-                                <i class="fa fa-instagram"></i>
-                                <span class="sr-only">Instagram</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -345,204 +370,19 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{% url 'adhemix_app:about' %}">
+                                <span class="mm-text">About Us</span>
+                            </a>
+                        </li>
+                        <li class="has-children">
                             <a href="{% url 'adhemix_app:shop' %}">
-                                <span class="mm-text">Shop</span>
+                                <span class="mm-text">Product</span>
                             </a>
                         </li>
                         <li class="has-children">
-                            <a href="#">
-                                <span class="mm-text">Shop</span>
+                            <a href="{% url 'adhemix_app:not_found' %}">
+                                <span class="mm-text">Services</span>
                             </a>
-                            <ul class="sub-menu">
-                                <li class="has-children">
-                                    <a href="#">
-                                        <span class="overlay-menu__title">Shop Layout</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Shop</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Left Sidebar</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Right Sidebar</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Three Columns</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Four Columns</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Full Width</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Left Sidebar</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Right Sidebar</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">
-                                        <span class="overlay-menu__title">Single Product</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Tab Style 1</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Tab Style 2</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Tab Style 3</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Gallery Left</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Gallery Right</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Sticky Left</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:shop' %}">
-                                                <span class="mm-text">Sticky Right</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Slider Box</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Slider Box Full Width</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Affiliate Proudct</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Variable Proudct</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="mm-text">Group Product</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">
-                                        <span class="overlay-menu__title">Shop Pages</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="{% url 'adhemix_app:my_account' %}">
-                                                <span class="mm-text">My Account</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:cart' %}">
-                                                <span class="mm-text">Shopping Cart</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:cart' %}">
-                                                <span class="mm-text">Check Out</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:wishlist' %}">
-                                                <span class="mm-text">Wishlist</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:order_tracking' %}">
-                                                <span class="mm-text">Order tracking</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'adhemix_app:compare' %}">
-                                                <span class="mm-text">compare</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-children">
-                            <a href="#">
-                                <span class="mm-text">Pages</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="{% url 'adhemix_app:my_account' %}">
-                                        <span class="mm-text">My Account</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:checkout' %}">
-                                        <span class="mm-text">Checkout</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:cart' %}">
-                                        <span class="mm-text">Cart</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:compare' %}">
-                                        <span class="mm-text">Compare</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:order_tracking' %}">
-                                        <span class="mm-text">Track Order</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'adhemix_app:wishlist' %}">
-                                        <span class="mm-text">Wishlist</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="{% url 'adhemix_app:contact' %}">
@@ -554,185 +394,6 @@
             </div>
         </aside>
         <!-- OffCanvas Menu End -->
-
-        <!-- Mini Cart Start -->
-        <aside class="mini-cart" id="miniCart">
-            <div class="mini-cart-wrapper">
-                <div class="mini-cart__close">
-                    <a href="#" class="btn-close"><i class="flaticon-cross"></i></a>
-                </div>
-                <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
-                    <div class="mini-cart__content">
-                        <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="flaticon-cross"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="{% static 'assets/img/products/product-11-90x90.jpg' %}" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:shop' %}">Lexbaro Begadi</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="flaticon-cross"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="{% static 'assets/img/products/product-12-90x90.jpg' %}" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="{% url 'adhemix_app:shop' %}">Lexbaro Begadi</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="{% url 'adhemix_app:cart' %}" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="{% url 'adhemix_app:checkout' %}" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- Mini Cart End -->
-
-        <!-- Qicuk View Modal Start -->
-        <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="flaticon-cross"></i></span>
-                        </button>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="element-carousel slick-vertical-center" data-slick-options='{
-                                    "slidesToShow": 1,
-                                    "slidesToScroll": 1,
-                                    "arrows": true,
-                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-double-left" },
-                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" }
-                                }'>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="{% static 'assets/img/products/product-03-270x300.jpg' %}" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="{% static 'assets/img/products/product-04-270x300.jpg' %}" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="{% static 'assets/img/products/product-05-270x300.jpg' %}" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="{% static 'assets/img/products/product-06-270x300.jpg' %}" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="modal-box product-summary">
-                                    <div class="product-navigation text-right mb--20">
-                                        <a href="#" class="prev"><i class="fa fa-angle-double-left"></i></a>
-                                        <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                    <div class="product-rating d-flex mb--20">
-                                        <div class="star-rating star-four">
-                                            <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                        </div>
-                                    </div>
-                                    <h3 class="product-title mb--20">Golden Easy Spot Chair.</h3>
-                                    <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed
-                                        suscipit
-                                        arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo
-                                        eget,
-                                        sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus
-                                        scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                    <div class="product-price-wrapper mb--25">
-                                        <span class="money">$200.00</span>
-                                        <span class="price-separator">-</span>
-                                        <span class="money">$400.00</span>
-                                    </div>
-                                    <form action="#" class="variation-form mb--20">
-                                        <div class="product-size-variations d-flex align-items-center mb--15">
-                                            <p class="variation-label">Size:</p>
-                                            <div class="product-size-variation variation-wrapper">
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip"
-                                                        data-placement="top" title="S">
-                                                        <span class="product-size-variation-label">S</span>
-                                                    </a>
-                                                </div>
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="M">
-                                                        <span class="product-size-variation-label">M</span>
-                                                    </a>
-                                                </div>
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="L">
-                                                        <span class="product-size-variation-label">L</span>
-                                                    </a>
-                                                </div>
-                                                <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="XL">
-                                                        <span class="product-size-variation-label">XL</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a href="" class="reset_variations">Clear</a>
-                                    </form>
-                                    <div
-                                        class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                        <div
-                                            class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                            <label class="quantity-label" for="qty">Quantity:</label>
-                                            <div class="quantity">
-                                                <input type="number" class="quantity-input" name="qty" id="qty"
-                                                    value="1" min="1">
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="window.location.href='{% url 'adhemix_app:cart' %}'">
-                                            Add To Cart
-                                        </button>
-                                    </div>
-                                    <div class="product-footer-meta">
-                                        <p><span>Category:</span>
-                                            <a href="shop.html">Full Sweater</a>,
-                                            <a href="shop.html">SweatShirt</a>,
-                                            <a href="shop.html">Jacket</a>,
-                                            <a href="shop.html">Blazer</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="global-overlay"></div>
         <a class="scroll-to-top" href=""><i class="fa fa-angle-double-up"></i></a>
 
