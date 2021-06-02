@@ -249,7 +249,7 @@ tzlocal==1.5.1
 unicodecsv==0.14.1
 uritools==3.0.0
 urlextract==0.14.0
-urllib3==1.24.1
+urllib3==1.26.5
 virtualenv==20.0.18
 virtualenv-clone==0.2.5
 wcwidth==0.1.7
