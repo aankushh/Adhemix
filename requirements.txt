@@ -50,7 +50,7 @@ defusedxml==0.5.0
 distlib==0.3.0
 distributed==1.26.0
 dj-database-url==0.5.0
-Django==3.0.4
+Django==3.1.9
 django-allauth==0.42.0
 django-countries==6.1.2
 django-dajax==0.9.2
